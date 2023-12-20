@@ -1,0 +1,28 @@
+import http.server
+import socketserver
+
+class CORSRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header('Access-Control-Allow-Origin', '*')
+        super().end_headers()
+
+with socketserver.TCPServer(("", 8000), CORSRequestHandler) as httpd:
+    print("serving at port", 8000)
+    httpd.serve_forever()
+
+
+import pantherapi
+
+def get_users():
+    # Initialize the Panther API client
+    client = pantherapi.Client(api_key='your_api_key', api_secret='your_api_secret')
+
+    # Retrieve user information
+    users = client.get_users()
+
+    # Print the user information
+    for user in users:
+        print(f"Username: {user['username']}, Email: {user['email']}, Role: {user['role']}")
+
+if __name__ == '__main__':
+    get_users()
