@@ -1,0 +1,38 @@
+import os
+import sys
+import time
+import datetime
+import re
+import json
+import requests
+
+def siem_control():
+    # Your code here
+    pass
+
+if __name__ == '__main__':
+    siem_control()
+
+def get_user_list():
+    user_list = []
+    n = int(input("Enter the number of elements: "))
+    for i in range(n):
+        element = int(input(f"Enter element {i+1}: "))
+        user_list.append(element)
+    return user_list
+  import getpass
+
+
+def verify_credentials():
+    # Get the user's credentials
+    username = input("Enter your username: ")
+    password = getpass.getpass("Enter your password: ")
+
+    # Check if the credentials are valid
+    if username == "my_username" and password == "my_password":
+        print("Credentials verified. Access granted.")
+    else:
+        print("Invalid credentials. Access denied.")
+
+if __name__ == '__main__':
+    verify_credentials()
